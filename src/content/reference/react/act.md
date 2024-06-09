@@ -96,12 +96,12 @@ import Counter from './Counter';
 it('can render and update a counter', async () => {
   container = document.createElement('div');
   document.body.appendChild(container);
-  
+
   // ✅ Render the component inside act().
   await act(() => {
     ReactDOM.createRoot(container).render(<Counter />);
   });
-  
+
   const button = container.querySelector('button');
   const label = container.querySelector('p');
   expect(label.textContent).toBe('You clicked 0 times');
@@ -109,7 +109,7 @@ it('can render and update a counter', async () => {
 });
 ```
 
-Here, wwe create a container, append it to the document, and render the `Counter` component inside `act()`. This ensures that the component is rendered and its effects are applied before making assertions.
+Here, we create a container, append it to the document, and render the `Counter` component inside `act()`. This ensures that the component is rendered and its effects are applied before making assertions.
 
 Using `act` ensures that all updates have been applied before we make assertions.
 
@@ -125,11 +125,11 @@ import Counter from './Counter';
 it.only('can render and update a counter', async () => {
   const container = document.createElement('div');
   document.body.appendChild(container);
-  
+
   await act( async () => {
     ReactDOMClient.createRoot(container).render(<Counter />);
   });
-  
+
   // ✅ Dispatch the event inside act().
   await act(async () => {
     button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
